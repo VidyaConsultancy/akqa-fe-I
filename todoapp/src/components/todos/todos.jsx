@@ -17,7 +17,7 @@ export const Todos = () => {
   const [todos, setTodos] = React.useState([]);
   const [completedTodos, setCompletedTodos] = React.useState(0);
   const [showEditDialog, setShowEditDialog] = React.useState(false);
-  const [updateTodo, setUpdateTodo] = React.useState({id: 0, todo: ''});
+  const [updateTodo, setUpdateTodo] = React.useState({ id: 0, todo: "" });
 
   const addNewTodo = (todo) => {
     const updatedTodos = [
@@ -59,30 +59,30 @@ export const Todos = () => {
     if (todo) {
       setUpdateTodo({
         id: id,
-        todo: todo.todo
-      })
+        todo: todo.todo,
+      });
       setShowEditDialog(true);
     }
   };
 
   const handleClose = () => {
     setShowEditDialog(false);
-  }
+  };
 
   const handleTodoUpdate = () => {
-    if(updateTodo.todo.trim().length === 0) {
-      alert('Incorrect todo value');
+    if (updateTodo.todo.trim().length === 0) {
+      alert("Incorrect todo value");
     }
-    const updatedTodos = todos.map(todo => {
-      console.log(updateTodo);
-      if(todo.id === updateTodo.id) return {...todo, todo: updateTodo.todo }
-      return todo
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === updateTodo.id)
+        return { ...todo, todo: updateTodo.todo.trim() };
+      return todo;
     });
     calculateCompletedTodos(updatedTodos);
     setTodos(updatedTodos);
     setUpdateTodo({ id: 0, todo: "" });
     handleClose();
-  }
+  };
 
   return (
     <div className="todos">
@@ -112,7 +112,9 @@ export const Todos = () => {
             fullWidth
             variant="standard"
             value={updateTodo.todo}
-            onChange={(e) => setUpdateTodo({ ...updateTodo, todo: e.target.value })}
+            onChange={(e) =>
+              setUpdateTodo({ ...updateTodo, todo: e.target.value })
+            }
           />
         </DialogContent>
         <DialogActions>
