@@ -21,7 +21,18 @@
 }
 
 .todo-item {
-  padding: 1em 0;
+  padding: 0.5em 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todo-item--completed {
+  text-decoration: line-through;
+}
+
+.todo-name {
+  flex: 1 auto;
 }
 
 .todo-list > * ~ * {

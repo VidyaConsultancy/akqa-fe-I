@@ -1,13 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { ThemeProvider, createTheme } from '@mui/material';
 import './index.css';
 import App from './components/app/app';
 import reportWebVitals from './reportWebVitals';
 
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+      'Nunito',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  },
+})
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App name='Todoapp' version="1.0.0" />
+    <ThemeProvider theme={theme}>
+      <App name='Todoapp' version="1.0.0" />
+    </ThemeProvider>
   </React.StrictMode>
 );
 

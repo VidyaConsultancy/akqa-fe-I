@@ -20,7 +20,6 @@ import "./app.css";
 export default class App extends Component {
   constructor(props) {
     super(props);
-    console.log('APP', props);
     this.name = "App";
     this.state = {
       appName: 'todoapp'
@@ -43,9 +42,9 @@ export default class App extends Component {
 
   static getDerivedStateFromSnapshot() {} */
 
-  handleClick = (event, value) => {
-    console.log('Clicked', event, value);
-  }
+  // handleClick = (event, value) => {
+  //   console.log('Clicked', event, value);
+  // }
 
   render() {
     return (
