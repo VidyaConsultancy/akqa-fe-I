@@ -2,6 +2,36 @@
   width: 100%;
   max-width: 500px;
   background-color: white;
-  padding: 3em 2em;
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.todo-header {
+  padding: 1em 2rem;
+  box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.15);
+}
+
+.todo-title {
+  margin-inline: -2rem;
+  border-bottom: 3px double #eee;
+  font-size: 3rem;
+}
+
+.todo-list {
+  box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.15);
+  padding: 0 2em;
+}
+
+.todo-item {
+  padding: 1em 0;
+}
+
+.todo-list > * ~ * {
+  border-top: 1px solid #eee;
+}
+
+.todo-footer {
+  padding: 1em 2em;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

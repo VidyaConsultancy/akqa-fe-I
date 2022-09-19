@@ -53,6 +53,7 @@ export default class App extends Component {
         {/* <h1 className="app-title" title={this.props.name}>{this.name} | {this.props.name} | <small>{this.props.version}</small></h1>
         <button onClick={this.handleClick}>Click Me!</button>
         <button onClick={(e) => this.handleClick(e, 'some value')}>Click Me!</button> */}
+        {/* <input type="text" value={this.state.appName} onChange={(e) => this.setState({ appName: e.target.value })} /> */}
         <Todos  />
       </div>
     );

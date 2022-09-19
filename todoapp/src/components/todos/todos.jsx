@@ -1,4 +1,7 @@
 import React from "react";
+import { TodoHeader } from "../todo-header/todo-header";
+import { TodoFooter } from "../todo-footer/todo-footer";
+import { TodoItem } from "../todo-item/todo-item";
 import "./todos.css";
 
 export const Todos = () => {
@@ -34,10 +37,14 @@ export const Todos = () => {
   ];
 
   return (
-    <ul className="todos" role="list">
-      {todos.map((todo) => (
-        <li className="todo" key={todo.id}>{todo.todo}</li>
-      ))}
-    </ul>
+    <div className="todos">
+      <TodoHeader />
+      <ul className="todo-list">
+        {todos.map((todo) => (
+          <TodoItem key={todo.id} {...todo} />
+        ))}
+      </ul>
+      <TodoFooter />
+    </div>
   );
 };
