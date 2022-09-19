@@ -43,10 +43,16 @@ export default class App extends Component {
 
   static getDerivedStateFromSnapshot() {} */
 
+  handleClick = (event, value) => {
+    console.log('Clicked', event, value);
+  }
+
   render() {
     return (
       <div className="app">
-        <h1 className="app-title">TODOAPP</h1>
+        {/* <h1 className="app-title" title={this.props.name}>{this.name} | {this.props.name} | <small>{this.props.version}</small></h1>
+        <button onClick={this.handleClick}>Click Me!</button>
+        <button onClick={(e) => this.handleClick(e, 'some value')}>Click Me!</button> */}
         <Todos  />
       </div>
     );
