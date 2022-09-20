@@ -48,6 +48,27 @@
       "createdAt": "2022-09-20T07:29:28.812Z",
       "modifiedAt": "2022-09-20T07:29:28.812Z",
       "id": 7
+    },
+    {
+      "todo": "Learn MEAN stack",
+      "isCompleted": false,
+      "createdAt": "2022-09-20T09:54:26.599Z",
+      "modifiedAt": "2022-09-20T09:54:26.599Z",
+      "id": 8
+    },
+    {
+      "todo": "Learn MERN stack",
+      "isCompleted": false,
+      "createdAt": "2022-09-20T09:54:29.750Z",
+      "modifiedAt": "2022-09-20T09:54:29.750Z",
+      "id": 9
+    },
+    {
+      "todo": "Learn Java",
+      "isCompleted": false,
+      "createdAt": "2022-09-20T09:54:32.244Z",
+      "modifiedAt": "2022-09-20T09:54:32.244Z",
+      "id": 10
     }
   ],
   "users": []
