@@ -8,6 +8,7 @@ import {
   TextField,
   Button,
 } from "@mui/material";
+import { TodoService } from "../../services/todos.service";
 import { TodoHeader } from "../todo-header/todo-header";
 import { TodoFooter } from "../todo-footer/todo-footer";
 import { TodoItem } from "../todo-item/todo-item";
@@ -18,6 +19,13 @@ export const Todos = () => {
   const [completedTodos, setCompletedTodos] = React.useState(0);
   const [showEditDialog, setShowEditDialog] = React.useState(false);
   const [updateTodo, setUpdateTodo] = React.useState({ id: 0, todo: "" });
+
+  // useEffect hook implments componentDidMount, componentWillUnmount, componentDidUpdate, shouldComponentUpdate
+  React.useEffect(() => {
+    TodoService.fetchTodos()
+      .then((data) => setTodos(data))
+      .catch((error) => console.error(error));
+  }, []);
 
   const addNewTodo = (todo) => {
     const updatedTodos = [

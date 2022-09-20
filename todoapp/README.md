@@ -40,3 +40,21 @@
 - A component is that create a UI part.
   1. Functional Component - javascript function
   2. Class Component - javascript class
+
+
+## JSON SERVER - endpoint examples
+**TODOS ENDPOINTS**
+- GET     http://localhost:4000/todos
+- GET     http://localhost:4000/todos/:id
+- POST    http://localhost:4000/todos
+- PUT     http://localhost:4000/todos/:id
+- PATCH   http://localhost:4000/todos/:id
+- DELETE  http://localhost:4000/todos/:id
+
+**USER ENDPOINTS**
+- GET     http://localhost:4000/users
+- GET     http://localhost:4000/users/:id
+- POST    http://localhost:4000/users
+- PUT     http://localhost:4000/users/:id
+- PATCH   http://localhost:4000/users/:id
+- DELETE  http://localhost:4000/users/:id
