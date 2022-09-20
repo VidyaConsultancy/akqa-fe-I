@@ -1,4 +1,54 @@
 {
-  "todos": [],
+  "todos": [
+    {
+      "id": 1,
+      "todo": "Learn HTML",
+      "isCompleted": true,
+      "createdAt": "2022-09-20T07:08:24.558Z",
+      "modifiedAt": "2022-09-20T07:08:24.558Z"
+    },
+    {
+      "todo": "Learn CSS",
+      "isCompleted": true,
+      "createdAt": "2022-09-20T07:15:03.786Z",
+      "modifiedAt": "2022-09-20T07:15:03.786Z",
+      "id": 2
+    },
+    {
+      "todo": "Learn Flexbox",
+      "isCompleted": true,
+      "createdAt": "2022-09-20T07:17:34.809Z",
+      "modifiedAt": "2022-09-20T07:17:34.809Z",
+      "id": 3
+    },
+    {
+      "todo": "Learn Grid",
+      "isCompleted": true,
+      "createdAt": "2022-09-20T07:17:37.668Z",
+      "modifiedAt": "2022-09-20T07:17:37.668Z",
+      "id": 4
+    },
+    {
+      "todo": "Learn JavaScript",
+      "isCompleted": true,
+      "createdAt": "2022-09-20T07:17:42.750Z",
+      "modifiedAt": "2022-09-20T07:17:42.750Z",
+      "id": 5
+    },
+    {
+      "todo": "Learn React",
+      "isCompleted": false,
+      "createdAt": "2022-09-20T07:22:01.187Z",
+      "modifiedAt": "2022-09-20T07:22:01.187Z",
+      "id": 6
+    },
+    {
+      "todo": "Learn Sass & Scss syntax",
+      "isCompleted": false,
+      "createdAt": "2022-09-20T07:29:28.812Z",
+      "modifiedAt": "2022-09-20T07:29:28.812Z",
+      "id": 7
+    }
+  ],
   "users": []
 }

@@ -8,10 +8,10 @@ class APIService {
   #makeRequest = async ({ endPoint, method, data = {}, headers = {} }) => {
     const options = { method, headers };
 
-    if(Object.keys(data).length > 0) {
+    if (Object.keys(data).length > 0) {
       options.body = JSON.stringify(data);
     }
-    
+
     const url = `${this.#baseUrl}/${endPoint}`;
     try {
       const res = await fetch(url, options);
@@ -26,15 +26,15 @@ class APIService {
     return this.#makeRequest({ endPoint, method: 'GET', headers })
   }
 
-  post = ({ endPoint, headers, data }) => {
+  post = ({ endPoint, headers = { "Content-Type": "application/json" }, data }) => {
     return this.#makeRequest({ endPoint, method: 'POST', headers, data })
   }
 
-  put = ({ endPoint, headers, data }) => {
+  put = ({ endPoint, headers = { "Content-Type": "application/json" }, data }) => {
     return this.#makeRequest({ endPoint, method: 'PUT', headers, data })
   }
 
-  patch = ({ endPoint, headers, data }) => {
+  patch = ({ endPoint, headers = { "Content-Type": "application/json" }, data }) => {
     return this.#makeRequest({ endPoint, method: 'PATCH', headers, data })
   }
 

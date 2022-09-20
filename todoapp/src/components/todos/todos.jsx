@@ -23,32 +23,39 @@ export const Todos = () => {
   // useEffect hook implments componentDidMount, componentWillUnmount, componentDidUpdate, shouldComponentUpdate
   React.useEffect(() => {
     TodoService.fetchTodos()
-      .then((data) => setTodos(data))
+      .then((data) => {setTodos(data); calculateCompletedTodos(data);})
       .catch((error) => console.error(error));
   }, []);
 
-  const addNewTodo = (todo) => {
-    const updatedTodos = [
-      ...todos,
-      {
-        id: todos.length + 1,
-        todo: todo,
-        isCompleted: false,
-        createdAt: new Date(),
-        modifiedAt: new Date(),
-      },
-    ];
+  const addNewTodo = async (todo) => {
+    const newTodo = {
+      todo: todo,
+      isCompleted: false,
+      createdAt: new Date(),
+      modifiedAt: new Date(),
+    };
+    const data = await TodoService.createTodo(newTodo).catch((error) =>
+      console.error(`Error! failed to create the todo`)
+    );
+    const updatedTodos = [...todos, data];
     calculateCompletedTodos(updatedTodos);
     setTodos(updatedTodos);
   };
 
-  const handleToggleChange = (isChecked, id) => {
-    const updatedTodos = todos.map((todo) => {
-      if (todo.id === id) return { ...todo, isCompleted: isChecked };
-      return todo;
-    });
-    calculateCompletedTodos(updatedTodos);
-    setTodos(updatedTodos);
+  const handleToggleChange = async (isChecked, id) => {
+    const isTodo = todos.find((todo) => todo.id === id);
+    if (isTodo) {
+      const updatedTodo = await TodoService.updateTodo(id, {
+        ...isTodo,
+        isCompleted: isChecked,
+      }).catch((error) => console.error(`Error! failed to update the todo`));
+      const updatedTodos = todos.map((todo) => {
+        if (todo.id === id) return { ...updatedTodo };
+        return todo;
+      });
+      calculateCompletedTodos(updatedTodos);
+      setTodos(updatedTodos);
+    }
   };
 
   const calculateCompletedTodos = (todoItems) => {
@@ -56,18 +63,22 @@ export const Todos = () => {
     setCompletedTodos(compTodos.length);
   };
 
-  const handleTodoDelete = (id) => {
-    const updatedTodos = todos.filter((todo) => todo.id !== id);
-    calculateCompletedTodos(updatedTodos);
-    setTodos(updatedTodos);
+  const handleTodoDelete = async (id) => {
+    try {
+      await TodoService.deleteTodo(id);
+      const updatedTodos = todos.filter((todo) => todo.id !== id);
+      calculateCompletedTodos(updatedTodos);
+      setTodos(updatedTodos);
+    } catch (res) {
+      console.error(`Error! failed to delete the todo`);
+    }
   };
 
   const handleTodoEdit = (id) => {
     const todo = todos.find((todo) => todo.id === id);
     if (todo) {
       setUpdateTodo({
-        id: id,
-        todo: todo.todo,
+        ...todo,
       });
       setShowEditDialog(true);
     }
@@ -77,19 +88,25 @@ export const Todos = () => {
     setShowEditDialog(false);
   };
 
-  const handleTodoUpdate = () => {
+  const handleTodoUpdate = async () => {
     if (updateTodo.todo.trim().length === 0) {
       alert("Incorrect todo value");
     }
-    const updatedTodos = todos.map((todo) => {
-      if (todo.id === updateTodo.id)
-        return { ...todo, todo: updateTodo.todo.trim() };
-      return todo;
-    });
-    calculateCompletedTodos(updatedTodos);
-    setTodos(updatedTodos);
-    setUpdateTodo({ id: 0, todo: "" });
-    handleClose();
+    try {
+      const res = await TodoService.updateTodo(updateTodo.id, {
+        ...updateTodo,
+        todo: updateTodo.todo.trim(),
+      });
+      const updatedTodos = todos.map((todo) => {
+        if (todo.id === updateTodo.id) return { ...res };
+        return todo;
+      });
+      setTodos(updatedTodos);
+      setUpdateTodo({ id: 0, todo: "" });
+      handleClose();
+    } catch (error) {
+      console.error(`Error! failed to update the todo`);
+    }
   };
 
   return (
